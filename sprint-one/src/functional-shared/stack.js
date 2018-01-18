@@ -6,7 +6,9 @@ var Stack = function() {
 
   someInstance.storage = {};
   someInstance.count = 0;
-  Object.assign(someInstance, stackMethods)
+
+
+  _.extend(someInstance, stackMethods);  
   
   return someInstance;
 };
@@ -18,13 +20,14 @@ stackMethods.push = function (value) {
 	this.count++;
 }
 stackMethods.pop = function() {
-	this.count--;
-	return this.storage[this.count];
+	if(this.count === 0) {
+      return null;
+    } else {
+      this.count--;
+      return this.storage[this.count];
+    }
 }
 
 stackMethods.size = function() {
-	if(this.count < 0) {
-		return 0;
-	}
 	return this.count;
 }

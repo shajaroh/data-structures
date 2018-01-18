@@ -12,16 +12,18 @@ class Stack {
   };
 
   pop() {
-    this.count--;
-    return this.storage[this.count];
+    if(this.count === 0) {
+      return null;
+    } else {
+      this.count--;
+      return this.storage[this.count];
+    }
   };
 
-  size () {
-    if(this.count < 0) {
-      return 0;
-    } 
-    return this.count;
-  };
+  size() {
+   return this.count; 
+   };
 
 
 }
+

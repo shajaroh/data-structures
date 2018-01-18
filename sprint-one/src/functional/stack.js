@@ -13,14 +13,15 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    count--;
-    return storage[count];
+    if (count === 0) {
+      return null;
+    } else {
+      count--;
+      return storage[count];
+    } 
   };
 
   someInstance.size = function() {
-    if(count < 0) {
-      return 0;
-    } 
     return count;
   };
   

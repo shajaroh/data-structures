@@ -6,8 +6,9 @@ var Queue = function() {
   someInstance.storage = {};
   someInstance.front = 0;
   someInstance.back = 0;
-  
-  Object.assign(someInstance, queueMethods);
+
+
+  _.extend(someInstance, queueMethods);
 
   return someInstance;
 
