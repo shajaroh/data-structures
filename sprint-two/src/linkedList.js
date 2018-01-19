@@ -4,9 +4,14 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
+    if (!list.head){
+      list.head = Node(value);
+    }
+    list.tail = Node(value);
   };
 
   list.removeHead = function() {
+    delete list.head;
   };
 
   list.contains = function(target) {
@@ -27,3 +32,10 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+ var test = LinkedList();
+
+ test.addToTail("x");
+ //test.addToTail(Node("y"));
+
+ console.log(test);
