@@ -14,35 +14,31 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  // var node = {};
-  // node.children = null;
-  //
-  // if (Object.keys(node).length === 0){
-  //   node[0] = value;
-  // } else {
-  //   for (var key in node){
-  //     if (key === undefined){
-  //       node[key + 1] = {"value": value};
-  //     }
-  //   }
-  // }
-  // //node.value = value;
-  // this.children = node;
-
   this.children.push(
-    {"value": value}
+    {
+      "value" : value,
+      "children" : [],
+      "addChild" : this.addChild
+    }
   );
 };
 
 treeMethods.contains = function(target) {
+  var isFound = false;
+
+  (function traverseTree(node){
+    if (node.value === target){
+      isFound = true;
+    } else {
+      node.children.forEach(function(obj){
+        traverseTree(obj);
+      });
+    }
+  })(this);
+
+  return isFound;
 };
 
-
-var test = Tree("something");
-test.addChild("something Else");
-test.addChild("somethign Else Else")
-
-console.log(test);
 
 /*
  * Complexity: What is the time complexity of the above functions?
